@@ -67,7 +67,7 @@ Vtot = m1*[0 0 g]*r_com_0;
 
 %% Mass moment of inertia
 
-% Moment of inertia of rods
+% Moment of inertia of tubes
 Ixxr = 3*(1/12 * 0.035 * (0.013^2 + 0.250^2) - 1/12 * .005 * (0.011^2 + .250^2)) + 2*(0.03*.250^2);
 Iyyr = 3*(1/12 * 0.035 * (0.013^2 + 0.250^2) - 1/12 * 0.005 * (0.011^2 + 0.250^2));
 Izzr = 3*(1/12 * 0.035 * (0.013^2 + 0.013^2) - 1/12 * 0.005 * (0.011^2 + 0.011^2)) + 2*(0.03*.250^2);
@@ -84,17 +84,20 @@ Iyys = 1/6 * 0.030 * (0.008^2 + 0.025 ^2) + 0.030*(0.00105)^2;
 
 % Moment of inertia of connector, taken about pivot point
 % connector is assumed to be one cylinder and two sqaure tubes
-Ixxcon = 0 + 2*0.036*0.125^2;
+Ixxcon = 0 + 2*0.03*0.125^2;
 Iyycon = 0;
-Izzcon =  2*0.036*0.125^2;
+Izzcon =  2*0.03*0.125^2;
+
+Ixxpoint = 0.03*0.375^2;
+Izzpoint = Ixxpoint;
 %4213.01 x mmg 38.4
 %2759.88 y mmg 49.145
 % 4199.14 z mmg 51
 
 
-Ix1_ = Ixxr + Ixxs + Ixxcon ;
+Ix1_ = Ixxr + Ixxs + Ixxcon +Ixxpoint ;
 Iy1_ = Iyyr + Iyyc + Iyys + Iyycon;
-Iz1_ = Izzr + Izzc + Izzs + Izzcon;
+Iz1_ = Izzr + Izzc + Izzs + Izzcon + Izzpoint;
 
 %% Kinetic Energy
 
